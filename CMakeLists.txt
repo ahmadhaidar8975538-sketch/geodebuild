@@ -1,17 +1,25 @@
-cmake_minimum_required(VERSION 3.25)
-project(AutoBuildLayout CXX)
 
-set(CMAKE_CXX_STANDARD 20)
+cmake_minimum_required(VERSION 3.21)
+
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-find_package(Geode REQUIRED)
+project(AutoBuildLayout VERSION 1.0.0)
 
-geode_target(AutoBuildLayout)
-
-target_sources(AutoBuildLayout PRIVATE
-    src/main.cpp
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
+    src/*.cpp
 )
 
-target_include_directories(AutoBuildLayout PRIVATE
-    src
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
+
+if (NOT DEFINED ENV{GEODE_SDK})
+    message(FATAL_ERROR "Unable to find Geode SDK!")
+endif()
+
+add_subdirectory(
+    $ENV{GEODE_SDK}
+    ${CMAKE_CURRENT_BINARY_DIR}/geode
 )
+
+setup_geode_mod(${PROJECT_NAME})
