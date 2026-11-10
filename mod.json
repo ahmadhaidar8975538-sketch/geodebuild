@@ -1,0 +1,10 @@
+{
+    "geode": "v3.0.0",
+    "version": "1.0.0",
+    "id": "darzxxww.autobuildlayout",
+    "name": "AutoBuild Layout",
+    "developer": "darzxxww",
+    "description": "An advanced automated layout generator mod for Geometry Dash 2.2081 using Geode SDK.",
+    "dependencies": [],
+    "settings": {}
+}
