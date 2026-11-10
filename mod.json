@@ -12,6 +12,6 @@
   "name": "AutoBuild Layout",
   "developer": "darzxxww",
   "description": "Automatic Geometry Dash layout generator.",
-  "dependencies": {}
+  "dependencies": {},
   "settings": {}
 }
